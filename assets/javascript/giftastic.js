@@ -39,14 +39,14 @@ $("#add-keyword").click(function () {
 })
 
 $(document).on("click", "#gifArrayBtns", function () {
-  // var results2;
-  // var results3;
+  var results2;
+  var results3;
   var searchQuery = $(this).attr("data-button");
   var giphyAPIKey = "api_key=UxNR1uNih1F65bA3EEK3M4XZnDrOhr2A";
-  // var accuweatherAPIKey = "apikey=uwu2fjRO7VYtbr9dCRkykSPy7wJOn3cF";
+  var accuweatherAPIKey = "apikey=uwu2fjRO7VYtbr9dCRkykSPy7wJOn3cF";
   var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?" + giphyAPIKey + "&q=" + searchQuery + "&limit=10";
-  // var locationQueryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?q=" + searchQuery + "&" + accuweatherAPIKey;
-  // var weatherQueryURL = "https://dataservice.accuweather.com/forecasts/v1/daily/1day/" + results2 + "?" + accuweatherAPIKey;
+  var locationQueryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?q=" + searchQuery + "&" + accuweatherAPIKey;
+  
 
   $.ajax({
       url: giphyQueryURL,
@@ -93,23 +93,25 @@ $(document).on("click", "#gifArrayBtns", function () {
       heartSpan.attr("aria-hidden", "true")
       heartSpan.attr("span-image", gifAnimate)
 
-        // $.ajax({
-        // url: locationQueryURL,
-        // method: "GET"
-        // })
-        // .then(function(response2) {
-        //   results2 = response2[0].Key;
-        //   console.log("City key" + results2);
+        $.ajax({
+        url: locationQueryURL,
+        method: "GET"
+        })
+        .then(function(response2) {
+          results2 = response2[0].Key;
+          console.log("City key" + results2);
+
+        var weatherQueryURL = "https://dataservice.accuweather.com/forecasts/v1/daily/1day/" + results2 + "?" + accuweatherAPIKey;
           
-        //   $.ajax({
-        //     url: weatherQueryURL,
-        //     method: "GET"
-        //   })
-        //     .then(function(response3) {
-        //       console.log(response3);
+          $.ajax({
+            url: weatherQueryURL,
+            method: "GET"
+          })
+            .then(function(response3) {
+              console.log(response3);
 
             
-        //       results3 = response3;
+              results3 = response3;
 
             gifDiv.append(gifImage);
             gifDiv.append(gifDivBody);
@@ -119,8 +121,8 @@ $(document).on("click", "#gifArrayBtns", function () {
             gifDivBody.append(heartSpan)
 
             $("#gif-body").prepend(gifDiv);
-        // });
-      // });
+        });
+      });
     }
   });
 });

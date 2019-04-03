@@ -18,3 +18,7 @@
     margin: auto;
     align-content: center;
 }
+
+button {
+    margin: 5px;
+}
