@@ -1,0 +1,20 @@
+#gifs {
+    border: red 1px solid;
+}
+#buttons-view {
+    border: blue 1px solid;
+}
+
+#favorites {
+    border: green 1px solid;
+}
+
+.food {
+    margin: 5px;
+    width: 150px;
+}
+
+.buttons {
+    margin: auto;
+    align-content: center;
+}
