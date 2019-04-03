@@ -20,37 +20,34 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="jumbotron">
-            <h1> Giphying</h1>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">Giphy</a>
+        <div class="form-inline">
+            <input class="form-control" type="text" id="keyword-term" placeholder="Add another city">
+            <button class="btn btn-secondary" id="add-keyword" type="submit">Add city</button>
         </div>
-
+    </nav>
+    <div class="container">
+        
         <div class="row">
             <div id="btns" class="col-sm-8"></div>
-            <div class="col-sm-4 form-group">
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" id="keyword-term" placeholder="Add another city" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" id="add-keyword" type="submit">Add city</button>
-                </form>
-            </div>  
+             
             
         </div>
 
         <div class="container ">
             <div class="row">
+                <div class="col-sm-8" style="text-align: center">
+                        <div>
+                            <h6 class="favorites">Click the heart to save GIFs</h6>
+                                <div id="gif-body" class="row"></div>
+                        </div>
+                </div>
                 <div class="col-sm-4" style="text-align: center">
                     <div>
-                        <h2 class="favorites">My favorites</h1><button class="btn btn-secondary btn-space"
+                        <h5 class="favorites">My favorites</h5><button class="btn btn-secondary btn-space"
                                 id="clearFavs">Clear</button>
-                            <div id="gif-favorites">
-
-                            </div>
-                    </div>
-                </div>
-                <div class="col-sm-8" style="text-align: center">
-                    <div>
-                        <h4 class="favorites">Click the heart to save GIFs</h4>
-                            <div id="gif-body" class="row"></div>
+                            <div id="gif-favorites"></div>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-var topics = ["Chicago","New York","Los Angeles","San Francisco","Louisiana","Austin","Nashville","Atlanta","Portland","Sioux Falls"];
+var topics = ["Chicago","Louisiana","Austin","Nashville","Atlanta","Portland"];
 
 function createBtns() {
   $("#btns").empty();
@@ -8,7 +8,7 @@ function createBtns() {
       var gifButton = $("<button>");
 
       gifButton.attr("ID", "gifArrayBtns");
-      gifButton.attr("class", "btn btn-primary btn-space")
+      gifButton.attr("class", "btn btn-dark btn-space")
       gifButton.attr("data-button", topics[i]);
       gifButton.text(topics[i]);
 
@@ -24,7 +24,7 @@ function renderFavs(favs) {
   for (var i = 0; i < favs.length; i++) {
       var favsImg = $("<img>")
       favsImg.attr("src", favs[i]);
-      favsImg.attr("style", "width: 150px; height: 150px")
+      favsImg.attr("style", "width: 200px; height: 200px")
       favsImg.addClass("btn-space")
 
       $("#gif-favorites").append(favsImg)
@@ -32,7 +32,7 @@ function renderFavs(favs) {
 }
 
 $("#add-keyword").click(function () {
-  var keywordPush = $("#keyword-term").val();
+  var keywordPush = $("#keyword-term").val().trim();
   topics.push(keywordPush);
   createBtns();
   $("#keyword-term").val("");
@@ -64,7 +64,7 @@ $(document).on("click", "#gifArrayBtns", function () {
 
       var gifRating = gifArray[i].rating;
       var gifTitle = gifArray[i].title;
-      var gifTitleShort = gifTitle.slice(0, 15);
+      var gifTitleShort = gifTitle.slice(0, 16);
 
       var title = $("<strong>").text(gifTitleShort.toUpperCase() + "...");
       title.attr("class", "card-title")
@@ -72,7 +72,9 @@ $(document).on("click", "#gifArrayBtns", function () {
       rating.attr("class", "card-body")
 
       var originalDownload = gifArray[i].images.original.url;
+      var target = '<a target="_blank"></a>'
       var downloadBtn = $("<a>").text("Download");
+      downloadBtn.attr("target", target);
       downloadBtn.attr("href", originalDownload);
       downloadBtn.attr("download", "giphy.gif");
       downloadBtn.addClass("btn btn-primary btn-space");
