@@ -1,4 +1,8 @@
 $(document).ready(function () {
+  $("#gif-body").css({"visibility": "hidden"});
+  $("#weather-div").css({"visibility": "hidden"});
+  $(".favorites").css({"visibility": "hidden"});
+  $("#myModal").modal("show");
 var topics = ["Chicago","Louisiana","Austin","Nashville","Atlanta","Portland"];
 
 function createBtns() {
@@ -39,6 +43,7 @@ $("#add-keyword").click(function () {
 })
 
 $(document).on("click", "#gifArrayBtns", function () {
+  $("#gif-body").css({"visibility": "visible"});
   var results2;
   var searchQuery = $(this).attr("data-button");
   var giphyAPIKey = "api_key=UxNR1uNih1F65bA3EEK3M4XZnDrOhr2A";
@@ -140,7 +145,8 @@ $(document).on("click", "#gifArrayBtns", function () {
               weatherDivBody.append(date);
               weatherDivBody.append(tempHigh);
               weatherDivBody.append(tempLow);
-
+              $("#weather-div").css({"visibility": "visible"});
+              $(".favorites").css({"visibility": "visible"});
               $("#weather-div").append(weatherDiv);
               
               

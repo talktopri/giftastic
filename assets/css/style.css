@@ -6,12 +6,22 @@ body {
 
 button {
     margin: 5px;
+    align-content: center;
+}
+
+.close {
+    color: black !important;
 }
 
 #gifArrayBtns {
     margin-top: 100px;
     margin-bottom: 20px;
     
+}
+
+.modal-title, h5 {
+    text-align: center;
+    color: lightslategray;
 }
 
 h6 {
@@ -46,10 +56,12 @@ h6 {
 .favs {
     margin-top: 5px;
     margin-bottom: 5px;
+    border: 1px solid lightgray;
 }
 
 .card {
     margin-bottom: 10px;
+    z-index: -4;
 }
 
 .weather-label {
@@ -79,3 +91,11 @@ h5 {
     color: lightgray;
     font-size: 24px;
 }
+
+#gif-body {
+    background-color: lightgray;
+    opacity: .8;
+    padding-top: 10px;
+    
+}
+
