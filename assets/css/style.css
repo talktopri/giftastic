@@ -1,24 +1,81 @@
-#gifs {
-    border: red 1px solid;
-}
-#buttons-view {
-    border: blue 1px solid;
-}
-
-#favorites {
-    border: green 1px solid;
-}
-
-.food {
-    margin: 5px;
-    width: 150px;
-}
-
-.buttons {
-    margin: auto;
-    align-content: center;
+body {
+    background-image: url("https://media.giphy.com/media/3s4qRdr90wbp3ZkDBd/giphy.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 button {
     margin: 5px;
+}
+
+#gifArrayBtns {
+    margin-top: 100px;
+    margin-bottom: 20px;
+    
+}
+
+h6 {
+    margin: 10px;
+}
+
+#btns {
+    margin: auto;
+}
+
+#weather-div {
+    align-content: center;
+   
+}
+
+.far {
+    border: .2px solid gray;
+    padding: 8px 12px 12px;;
+    margin-left: 2px; 
+    background-color: gray;
+    
+}
+
+.fas {
+    border: .2px solid gray;
+    padding: 8px 12px 12px;;
+    margin-left: 2px; 
+    background-color: gray;
+    
+}
+
+.favs {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.card {
+    margin-bottom: 10px;
+}
+
+.weather-label {
+    margin-bottom: 10px;
+}
+
+.fa-temperature-high {
+    background-color: tomato;
+    border: 0px;
+    color: white;
+}
+
+.fa-temperature-low {
+    background-color: lightskyblue;
+    border: 0px;
+    color: black;
+}
+
+span {
+    color: white;
+    font-family: 'Satisfy', cursive;
+    font-size: 30px;
+}
+
+h5 {
+    font-family: 'Rancho', cursive;
+    color: lightgray;
+    font-size: 24px;
 }

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Giphying</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Rancho|Satisfy" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
@@ -20,30 +21,40 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand">Giphy</a>
+    <nav class="navbar fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand">
+            <img src="https://media.giphy.com/media/riXC7CQwr4E3m/giphy.gif" width="10%" height="10%" class="d-inline-block align-center" alt="">
+            <span>Giphy City Weather</span></a>
         <div class="form-inline">
             <input class="form-control" type="text" id="keyword-term" placeholder="Add another city">
             <button class="btn btn-secondary" id="add-keyword" type="submit">Add city</button>
         </div>
     </nav>
-    <div class="container">
+    <div class="container-fluid">
         
         <div class="row">
-            <div id="btns" class="col-sm-8"></div>
+            <div id="btns"></div>
              
             
         </div>
 
-        <div class="container ">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-8" style="text-align: center">
+                <div class="col-sm-3" id="weather-div" style="text-align: center">
+                    <div class="weather-label">
+                        <h5>Check the weather for your selected city</h5>
+                    </div>
+                
+                </div>
+
+                    
+                <div class="col-sm-7" style="text-align: center">
                         <div>
-                            <h6 class="favorites">Click the heart to save GIFs</h6>
+                            <h5 class="favorites">Click the heart to add GIFs to the Favorites section</h5>
                                 <div id="gif-body" class="row"></div>
                         </div>
                 </div>
-                <div class="col-sm-4" style="text-align: center">
+                <div class="col-sm-2" style="text-align: center">
                     <div>
                         <h5 class="favorites">My favorites</h5><button class="btn btn-secondary btn-space"
                                 id="clearFavs">Clear</button>

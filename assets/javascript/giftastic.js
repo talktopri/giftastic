@@ -8,7 +8,7 @@ function createBtns() {
       var gifButton = $("<button>");
 
       gifButton.attr("ID", "gifArrayBtns");
-      gifButton.attr("class", "btn btn-dark btn-space")
+      gifButton.attr("class", "btn btn-dark btn-space");
       gifButton.attr("data-button", topics[i]);
       gifButton.text(topics[i]);
 
@@ -22,12 +22,12 @@ function renderFavs(favs) {
   $("#gif-favorites").empty();
 
   for (var i = 0; i < favs.length; i++) {
-      var favsImg = $("<img>")
+      var favsImg = $("<img>");
       favsImg.attr("src", favs[i]);
-      favsImg.attr("style", "width: 200px; height: 200px")
-      favsImg.addClass("btn-space")
+      favsImg.attr("style", "width: 200px; height: 200px");
+      favsImg.addClass("favs");
 
-      $("#gif-favorites").append(favsImg)
+      $("#gif-favorites").append(favsImg);
   }
 }
 
@@ -40,7 +40,6 @@ $("#add-keyword").click(function () {
 
 $(document).on("click", "#gifArrayBtns", function () {
   var results2;
-  var results3;
   var searchQuery = $(this).attr("data-button");
   var giphyAPIKey = "api_key=UxNR1uNih1F65bA3EEK3M4XZnDrOhr2A";
   var accuweatherAPIKey = "apikey=uwu2fjRO7VYtbr9dCRkykSPy7wJOn3cF";
@@ -54,22 +53,23 @@ $(document).on("click", "#gifArrayBtns", function () {
   }).then(function (response) {
 
     var gifArray = response.data;
+    console.log(gifArray)
 
     for (var i = 0; i < gifArray.length; i++) {
       var gifDiv = $("<div>");
-      gifDiv.addClass("card btn-space mx-auto")
-      gifDiv.attr("style", "width: 20em")
-      var gifDivBody = $("<div>")
-      gifDivBody.addClass("card-body")
+      gifDiv.addClass("card btn-space mx-auto");
+      gifDiv.attr("style", "width: 20em");
+      var gifDivBody = $("<div>");
+      gifDivBody.addClass("card-body");
 
       var gifRating = gifArray[i].rating;
       var gifTitle = gifArray[i].title;
       var gifTitleShort = gifTitle.slice(0, 16);
 
       var title = $("<strong>").text(gifTitleShort.toUpperCase() + "...");
-      title.attr("class", "card-title")
+      title.attr("class", "card-title");
       var rating = $("<p>").text("Rating: " + gifRating.toUpperCase());
-      rating.attr("class", "card-body")
+      rating.attr("class", "card-body");
 
       var originalDownload = gifArray[i].images.original.url;
       var target = '<a target="_blank"></a>'
@@ -83,16 +83,25 @@ $(document).on("click", "#gifArrayBtns", function () {
       var gifStill = gifArray[i].images.fixed_height_still.url
       var gifImage = $("<img>");
       gifImage.attr("src", gifStill);
-      gifImage.attr("data-still", gifStill)
-      gifImage.attr("data-animate", gifAnimate)
-      gifImage.attr("data-state", "still")
-      gifImage.addClass("card-img-top gif")
+      gifImage.attr("data-still", gifStill);
+      gifImage.attr("data-animate", gifAnimate);
+      gifImage.attr("data-state", "still");
+      gifImage.addClass("card-img-top gif");
 
       var heartSpan = $("<i>");
-      heartSpan.addClass("fas fa-heart");
-      heartSpan.attr("aria-hidden", "true")
-      heartSpan.attr("span-image", gifAnimate)
+      heartSpan.addClass("far fa-heart");
+      heartSpan.attr("aria-hidden", "true");
+      heartSpan.attr("span-image", gifAnimate);
 
+      gifDiv.append(gifImage);
+      gifDiv.append(gifDivBody);
+      gifDivBody.append(title);
+      gifDivBody.append(rating);
+      gifDivBody.append(downloadBtn);
+      gifDivBody.append(heartSpan);
+
+      $("#gif-body").prepend(gifDiv);
+    }
         $.ajax({
         url: locationQueryURL,
         method: "GET"
@@ -102,32 +111,50 @@ $(document).on("click", "#gifArrayBtns", function () {
           console.log("City key" + results2);
 
         var weatherQueryURL = "https://dataservice.accuweather.com/forecasts/v1/daily/1day/" + results2 + "?" + accuweatherAPIKey;
+        
           
           $.ajax({
             url: weatherQueryURL,
             method: "GET"
           })
             .then(function(response3) {
+
+              var weather = response3.DailyForecasts[0];
               console.log(response3);
+              var city = $("<strong>").text("City: " + response3.Headline.Link.slice(33, 43).toUpperCase());
+              var date = $("<p>").text("Date: " + weather.Date.slice(0,10));
+              var tempHigh = $("<p>").text(" Highest temperature: " + weather.Temperature.Maximum.Value + "F");
+              var tempLow = $("<p>").text(" Lowest temperature: " + weather.Temperature.Minimum.Value + "F");
+              console.log("date " + date);
+              console.log("tempHigh " + tempHigh);
+
+              var weatherDiv = $("<div>");
+              tempHigh.addClass("fas fa-temperature-high");
+              tempLow.addClass("fas fa-temperature-low");
+              weatherDiv.addClass("card btn-space mx-auto");
+              weatherDiv.attr("style", "width: 20em");
+              var weatherDivBody = $("<div>");
+              weatherDivBody.addClass("card-body");
+              weatherDiv.append(weatherDivBody);
+              weatherDivBody.append(city);
+              weatherDivBody.append(date);
+              weatherDivBody.append(tempHigh);
+              weatherDivBody.append(tempLow);
+
+              $("#weather-div").append(weatherDiv);
+              
+              
 
             
-              results3 = response3;
+              
 
-            gifDiv.append(gifImage);
-            gifDiv.append(gifDivBody);
-            gifDivBody.append(title);
-            gifDivBody.append(rating);
-            gifDivBody.append(downloadBtn);
-            gifDivBody.append(heartSpan)
-
-            $("#gif-body").prepend(gifDiv);
+           
         });
       });
-    }
   });
 });
 
-$(document).on("click", ".fas", function () {
+$(document).on("click", ".far", function () {
   var favImg = $(this).attr("span-image");
   favs.push(favImg);
   renderFavs(favs);
