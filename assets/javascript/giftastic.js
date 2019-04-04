@@ -44,7 +44,7 @@ $(document).on("click", "#gifArrayBtns", function () {
   var giphyAPIKey = "api_key=UxNR1uNih1F65bA3EEK3M4XZnDrOhr2A";
   var accuweatherAPIKey = "apikey=uwu2fjRO7VYtbr9dCRkykSPy7wJOn3cF";
   var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?" + giphyAPIKey + "&q=" + searchQuery + "&limit=10";
-  var locationQueryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?q=" + searchQuery + "&" + accuweatherAPIKey;
+  var locationQueryURL = "https://dataservice.accuweather.com/locations/v1/cities/search?q=" + searchQuery + "&" + accuweatherAPIKey;
   
 
   $.ajax({
